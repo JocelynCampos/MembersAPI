@@ -13,7 +13,7 @@
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Email</th>
-        <th>Phonenumber</th>
+        <th>Phone</th>
         <th>Birthday</th>
         <th>Address</th>
         <th>Delete</th>
@@ -25,7 +25,7 @@
     <td th:text="${member.lastName}"></td>
     <td th:text="${member.email}"></td>
     <td th:text="${member.phone}"></td>
-    <td th:text="${member.birthday}"></td>
+    <td th:text="${member.dateOfBirth}"></td>
     <td th:text="${member.address.street} + ', ' + ${member.address.postalCode} + ', ' + ${member.address.city}"></td>
         <form th:action="@{'/admin/deletememberbyid'(id=${member.id})}" method="post">
             <button type="submit">Delete</button>
