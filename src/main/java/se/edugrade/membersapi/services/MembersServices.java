@@ -24,12 +24,12 @@ public class MembersServices {
 
     public Members getMemberById(Long id) {
         return membersRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Member with id: " + id + " not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Member", "id", id));
     }
 
     public Members updateMember(Long id, Members updatedMember) {
         Members existingMember = membersRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Member with id: " + id + " not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Member", "id", id));
 
         existingMember.setFirstName(updatedMember.getFirstName());
         existingMember.setLastName(updatedMember.getLastName());
@@ -46,7 +46,7 @@ public class MembersServices {
 
     public void deleteMember(Long id) {
         Members deletedMember = membersRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Member with id: " + id + " not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Member", "id", id));
         membersRepository.delete(deletedMember);
     }
 }

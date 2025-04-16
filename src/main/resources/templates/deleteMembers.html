@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member List</title>
+</head>
+<body>
+<h1>All members</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phonenumber</th>
+        <th>Birthday</th>
+        <th>Address</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members} ">
+    <td th:text="${member.firstName}"></td>
+    <td th:text="${member.lastName}"></td>
+    <td th:text="${member.email}"></td>
+    <td th:text="${member.phone}"></td>
+    <td th:text="${member.birthday}"></td>
+    <td th:text="${member.address.street} + ', ' + ${member.address.postalCode} + ', ' + ${member.address.city}"></td>
+        <form th:action="@{'/admin/deletememberbyid'(id=${member.id})}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+</body>
+</html>
